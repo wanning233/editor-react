@@ -1,0 +1,88 @@
+.reactjs-tiptap-editor.reactjs-tiptap-editor {
+  .ProseMirror.ProseMirror.ProseMirror {
+    @apply richtext-caret-black dark:richtext-caret-white richtext-outline-0 richtext-pr-8 richtext-pl-20 richtext-py-16 richtext-z-0 lg:richtext-pl-8 lg:richtext-pr-8;
+    min-height: 180px;
+    padding: 32px 80px;
+
+    .ProseMirror-gapcursor {
+      @apply richtext-relative richtext-w-full richtext-max-w-2xl richtext-mx-auto;
+
+      &:after {
+        @apply richtext-border-t-black/40 dark:richtext-border-t-white/40 richtext-w-full richtext-top-[-1.5em] richtext-max-w-2xl richtext-mx-auto richtext-left-0 richtext-right-0;
+      }
+    }
+
+  }
+
+  .ProseMirror[contenteditable='true'].resize-cursor {
+    cursor: col-resize;
+  }
+
+}
+
+.slash-command-active.slash-command-active {
+  background-color: hsl(var(--accent)) !important;
+}
+
+[data-dui-1-3-5~='dui-tooltip-wrapper'] {
+  display: inline-block;
+  position: relative;
+}
+
+.heading-0 {
+  font-weight: 700;
+  font-size: 16px;
+}
+.heading-1 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.6;
+}
+.heading-2 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.6;
+}
+.heading-3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.heading-4 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.heading-5 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.heading-6 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.tableCellActive {
+  border-radius: 2px !important;
+  transition: all 100ms ease-in-out;
+}
+
+.tableCellActive > div {
+  border: unset !important;
+}
+
+.node-tableOfContents.focus {
+  border-width: 1px;
+  border-radius: 6px;
+}
+
+div[data-twitter] > div {
+  margin: 10px auto;
+}
+
+.react-renderer.node-twitter.focus {
+  border-width: 1px;
+  border-radius: 6px;
+}
