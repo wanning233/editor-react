@@ -1,12 +1,22 @@
-import React from 'react';
-import { Select } from 'antd';
+import React from "react";
+//@ts-ignore
+import { Select } from "antd";
 
 interface HeadingButtonProps {
-  items: Array<{ action: () => void; isActive: () => boolean; disabled: boolean; icon: string; shortcutKeys: string[]; }>; 
+  items: Array<{
+    action: () => void;
+    isActive: () => boolean;
+    disabled: boolean;
+    icon: string;
+    shortcutKeys: string[];
+  }>;
   disable: boolean;
 }
 
-export const HeadingButton: React.FC<HeadingButtonProps> = ({ items, disable }) => {
+export const HeadingButton: React.FC<HeadingButtonProps> = ({
+  items,
+  disable,
+}) => {
   const handleSelect = (value: string) => {
     const level = parseInt(value);
     const selectedItem = items[level];

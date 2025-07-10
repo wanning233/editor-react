@@ -1,7 +1,8 @@
 import { IconComponent } from "../../../components/icons/icon";
 import { ActiveButton } from "../../../components/ActiveButton";
 import { Editor } from "@tiptap/core";
-import { ColorPicker,Button } from "antd"; 
+//@ts-ignore
+import { ColorPicker, Button } from "antd";
 import { useState } from "react";
 
 interface ColorActiveButtonProps {
@@ -20,7 +21,7 @@ interface IconCProps {
 
 interface ColorProps {
   clear?: boolean;
-  metaColor?:MetaColor;
+  metaColor?: MetaColor;
 }
 
 interface MetaColor {
@@ -45,7 +46,7 @@ function IconC({ fill }: IconCProps) {
             <path
               d="M11,201.146447 L167,201.146447 C173.075132,201.146447 178,206.071314 178,212.146447 C178,218.221579 173.075132,223.146447 167,223.146447 L11,223.146447 C4.92486775,223.146447 7.43989126e-16,218.221579 0,212.146447 C-7.43989126e-16,206.071314 4.92486775,201.146447 11,201.146447 Z"
               id="矩形"
-              fill={fill || '#DF2A3F'}
+              fill={fill || "#DF2A3F"}
               fillRule="evenodd"
             />
             <path
@@ -67,15 +68,16 @@ function IconC({ fill }: IconCProps) {
   );
 }
 
-
 function ColorActiveButton(props: ColorActiveButtonProps) {
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(props.defaultColor);
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(
+    props.defaultColor
+  );
 
-  function onChange(color : ColorProps) {
+  function onChange(color: ColorProps) {
     if (color && color.metaColor) {
-      const rgbaColor = `rgba(${color.metaColor.r}, ${color.metaColor.g}, ${color.metaColor.b}, ${color.metaColor.a})`; 
-      props.action?.(rgbaColor); 
-      setSelectedColor(rgbaColor); 
+      const rgbaColor = `rgba(${color.metaColor.r}, ${color.metaColor.g}, ${color.metaColor.b}, ${color.metaColor.a})`;
+      props.action?.(rgbaColor);
+      setSelectedColor(rgbaColor);
     } else {
       props.action?.(undefined);
       setSelectedColor(undefined);
@@ -101,8 +103,15 @@ function ColorActiveButton(props: ColorActiveButtonProps) {
         colors={props?.color}
         defaultColor={props?.defaultColor}
       >
-        <Button variant="outlined" className="r!ichtext-h-[32px] !richtext-w-3" disabled={props?.disabled}>
-          <IconComponent className="!richtext-w-3 !richtext-h-3 richtext-text-zinc-500" name="MenuDown" />
+        <Button
+          variant="outlined"
+          className="r!ichtext-h-[32px] !richtext-w-3"
+          disabled={props?.disabled}
+        >
+          <IconComponent
+            className="!richtext-w-3 !richtext-h-3 richtext-text-zinc-500"
+            name="MenuDown"
+          />
         </Button>
       </ColorPicker>
     </div>

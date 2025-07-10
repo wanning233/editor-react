@@ -1,49 +1,72 @@
-
 .ProseMirror:focus-visible {
-  outline: none; 
-  box-shadow: none; 
-  border-color: transparent; 
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9; 
-    }
-  
-  .toolbar {
-    margin-bottom: 20px;
-    padding: 15px; 
-    border-radius: 8px; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-  }
-  
-  .toolbar .ant-btn , .toolbar .ant-select {
-    border-radius: 5px;
-    cursor: pointer; 
-    transition: background-color 0.3s; 
-  }
-  
-  
-  .editor-container {
-    width: 100%;
-    max-width: 800px; 
-    border: 1px solid #ddd; 
-    border-radius: 8px; 
-    background-color: #ffffff; 
-    overflow: hidden; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  }
-  
-  .text-area {
-    min-height: 400px; 
-    padding: 15px; 
-    font-family: 'Arial', sans-serif; 
-    font-size: 16px; 
-    line-height: 1.5; 
-    color: #333; 
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+  min-height: 48px;
+}
+
+.toolbar button,
+.toolbar .ant-btn {
+  background: none;
+  border: none;
+  box-shadow: none;
+  margin: 0 2px;
+  padding: 0 8px;
+  height: 32px;
+  min-width: 32px;
+  font-size: 18px;
+  color: #222;
+  border-radius: 4px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbar button:hover,
+.toolbar .ant-btn:hover {
+  background: #f0f2f5;
+  color: #1677ff;
+}
+
+.toolbar .ant-btn[aria-pressed="true"],
+.toolbar button.active {
+  background: #e6f4ff;
+  color: #1677ff;
+  font-weight: bold;
+}
+
+.editor-container {
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-area {
+  min-height: 400px;
+  padding: 15px;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
