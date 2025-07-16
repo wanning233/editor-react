@@ -45,7 +45,6 @@ export const TextAlign = TiptapTextAlign.extend<TextAlignOptions>({
         }));
         const disabled =
           items.filter((k) => k.disabled).length === items.length;
-        console.log(items, disabled);
         return {
           component: TextAlignButton,
           componentProps: {

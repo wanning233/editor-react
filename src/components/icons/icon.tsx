@@ -7,7 +7,7 @@ export interface IconComponentProps {
   onClick?: React.MouseEventHandler<SVGElement>;
 }
 
-function IconComponent(props: IconComponentProps) {
+export const IconComponent = (props: IconComponentProps) => {
   const Icon = icons[props.name];
 
   return Icon ? (
@@ -16,6 +16,4 @@ function IconComponent(props: IconComponentProps) {
       className={`richtext-w-4 richtext-h-4 ${props?.className || ""}`}
     />
   ) : null;
-}
-
-export { IconComponent };
+};

@@ -2,9 +2,10 @@
 import { Button, Tooltip } from "antd";
 import type { ButtonViewReturnComponentProps } from "@/types";
 import { getShortcutKey } from "../utils/plateform";
+import { IconComponent } from "./icons/icon";
 
 export interface ActiveButtonProps {
-  icon?: React.ReactNode;
+  icon?: string;
   title?: string;
   tooltip?: string;
   disabled?: boolean;
@@ -24,8 +25,6 @@ export interface ActiveButtonProps {
 export const ActiveButton = ({
   isActive,
   action,
-  icon: Icon,
-  iconProps,
   children,
   title,
   tooltip,
@@ -33,6 +32,7 @@ export const ActiveButton = ({
   shortcutKeys,
   customClass,
   loading,
+  icon,
 }: ActiveButtonProps & { iconProps?: any }) => {
   const buttonContent = (
     <Button
@@ -43,8 +43,8 @@ export const ActiveButton = ({
       className={customClass}
       title={title}
     >
-      {Icon && <Icon {...iconProps} />}
-      {children}
+      {icon && <IconComponent name={icon} />}
+      {!icon && children}
     </Button>
   );
 

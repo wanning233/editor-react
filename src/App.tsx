@@ -15,6 +15,7 @@ import { Heading } from "./extensions/Heading/Heading";
 import { TextAlign } from "./extensions/TextAlign/TextAlign";
 //@ts-ignore
 import { Layout } from "antd";
+import { Indent } from "./extensions/Indent";
 
 const { Header, Sider, Content } = Layout;
 
@@ -30,6 +31,7 @@ const extensions = [
   Italic,
   Heading,
   TextAlign,
+  Indent,
 ];
 
 const menuItems = [

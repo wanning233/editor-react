@@ -11,20 +11,18 @@
         @apply richtext-border-t-black/40 dark:richtext-border-t-white/40 richtext-w-full richtext-top-[-1.5em] richtext-max-w-2xl richtext-mx-auto richtext-left-0 richtext-right-0;
       }
     }
-
   }
 
-  .ProseMirror[contenteditable='true'].resize-cursor {
+  .ProseMirror[contenteditable="true"].resize-cursor {
     cursor: col-resize;
   }
-
 }
 
 .slash-command-active.slash-command-active {
   background-color: hsl(var(--accent)) !important;
 }
 
-[data-dui-1-3-5~='dui-tooltip-wrapper'] {
+[data-dui-1-3-5~="dui-tooltip-wrapper"] {
   display: inline-block;
   position: relative;
 }
@@ -62,6 +60,15 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1.6;
+}
+
+// 缩进样式支持 - 使用padding-left而不是text-indent
+@for $i from 1 through 7 {
+  $indent-margin-base: 2rem;
+
+  .ProseMirror *[data-indent="#{$i}"] {
+    padding-left: $indent-margin-base * $i !important;
+  }
 }
 
 .tableCellActive {

@@ -1,7 +1,6 @@
 import { ActiveButton } from "../../components/ActiveButton";
 import { Bold as TiptapBold } from "@tiptap/extension-bold";
 import type { BoldOptions as TiptapImageOptions } from "@tiptap/extension-bold";
-import { IconComponent } from "@/components/icons/icon";
 
 export const Bold = TiptapBold.extend<TiptapImageOptions, {}>({
   addOptions() {
@@ -15,8 +14,7 @@ export const Bold = TiptapBold.extend<TiptapImageOptions, {}>({
           },
           isActive: () => editor.isActive("bold") || false,
           disabled: false,
-          icon: IconComponent,
-          iconProps: { name: "Bold" },
+          icon: "Bold",
           shortcutKeys: ["mod", "B"],
         },
       }),
