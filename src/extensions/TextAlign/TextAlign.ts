@@ -30,10 +30,10 @@ export const TextAlign = TiptapTextAlign.extend<TextAlignOptions>({
           justify: ["mod", "Shift", "J"],
         };
         const iconMap = {
-          left: "Left",
-          center: "Center",
-          right: "Right",
-          justify: "Justify",
+          left: "TextAlignLeft",
+          center: "TextAlignCenter",
+          right: "TextAlignRight",
+          justify: "TextAlignJustify",
         };
         const items = alignments.map((k) => ({
           title: k,

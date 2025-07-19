@@ -4,10 +4,11 @@ import { Dropdown, Button, Tooltip } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import type { ButtonViewReturnComponentProps } from "../../../types";
 import { getShortcutKey } from "../../../utils/plateform";
+import { IconComponent } from "../../../components/icons/icon";
 
 export interface Item {
   title: string;
-  icon?: any;
+  icon?: string;
   isActive: NonNullable<ButtonViewReturnComponentProps["isActive"]>;
   action?: ButtonViewReturnComponentProps["action"];
   style?: React.CSSProperties;
@@ -22,7 +23,7 @@ interface IPropsTextAlignMenuButton {
   disabled?: boolean;
   color?: string;
   maxHeight?: string | number;
-  icon?: any;
+  icon?: string;
   tooltip?: string;
   items?: Item[];
 }
@@ -64,8 +65,7 @@ function TextAlignMenuButton(props: IPropsTextAlignMenuButton) {
           className="flex items-center gap-2 px-2 py-1 hover:bg-gray-100 rounded"
           onClick={item?.action}
         >
-          {/* {item?.icon && <span>{item.icon}</span>} */}
-          <span>{item.title}</span>
+          {item?.icon && <IconComponent name={item.icon} className="w-4 h-4" />}
         </div>
       </Tooltip>
     ),
@@ -85,7 +85,9 @@ function TextAlignMenuButton(props: IPropsTextAlignMenuButton) {
         title={props?.tooltip}
         className="flex items-center justify-center w-12 h-12"
       >
-        {props?.icon && <span className="mr-1">{props.icon}</span>}
+        {active?.icon && (
+          <IconComponent name={active.icon} className="w-4 h-4 mr-1" />
+        )}
         <DownOutlined className="text-xs text-gray-500" />
       </Button>
     </Dropdown>

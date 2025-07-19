@@ -19,7 +19,7 @@ export const Heading = TiptapHeading.extend<HeadingOptions>({
             action: () => editor.commands.toggleHeading({ level }),
             isActive: () => editor.isActive("heading", { level }),
             disabled: !editor.can().toggleHeading({ level }),
-            icon: "Heading",
+            icon: "",
             shortcutKeys: ["mod", "alt", level],
           };
         });

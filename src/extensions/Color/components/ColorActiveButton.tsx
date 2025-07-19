@@ -34,8 +34,7 @@ interface MetaColor {
 function IconC({ fill }: IconCProps) {
   return (
     <svg
-      width="18px"
-      height="18px"
+      className="color-icon"
       viewBox="0 0 240 240"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -89,31 +88,44 @@ function ColorActiveButton(props: ColorActiveButtonProps) {
   }
 
   return (
-    <div className="richtext-flex richtext-items-center richtext-h-[32px]">
-      <ActiveButton disabled={props?.disabled} action={toggleColor}>
-        <span className="richtext-flex richtext-items-center richtext-justify-center richtext-text-sm">
-          <IconC fill={selectedColor || props.initialDisplayedColor} />
-        </span>
-      </ActiveButton>
-      <ColorPicker
-        color={selectedColor}
-        //@ts-ignore
-        onChange={onChange}
-        disabled={props?.disabled}
-        colors={props?.color}
-        defaultColor={props?.defaultColor}
-      >
-        <Button
-          variant="outlined"
-          className="r!ichtext-h-[32px] !richtext-w-3"
+    <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
+      <div style={{ width: "30px" }}>
+        <ActiveButton
           disabled={props?.disabled}
+          action={toggleColor}
+          customClass="color-main-btn"
         >
-          <IconComponent
-            className="!richtext-w-3 !richtext-h-3 richtext-text-zinc-500"
-            name="MenuDown"
-          />
-        </Button>
-      </ColorPicker>
+          <span>
+            <IconC fill={selectedColor || props.initialDisplayedColor} />
+          </span>
+        </ActiveButton>
+      </div>
+      <div style={{ width: "28px" }}>
+        <ColorPicker
+          color={selectedColor}
+          //@ts-ignore
+          onChange={onChange}
+          disabled={props?.disabled}
+          colors={props?.color}
+          defaultColor={props?.defaultColor}
+        >
+          <Button
+            variant="outlined"
+            disabled={props?.disabled}
+            style={{
+              width: "28px",
+              height: "40px",
+              minWidth: "28px",
+              padding: "0",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <IconComponent name="MenuDown" />
+          </Button>
+        </ColorPicker>
+      </div>
     </div>
   );
 }

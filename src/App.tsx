@@ -55,20 +55,20 @@ function App() {
 
   return (
     <Layout style={{ height: "100vh" }}>
-      {/* 顶部工具栏 */}
+      {/* 顶部标题栏 */}
       <Header
         style={{
           background: "#fff",
           padding: "0 24px",
-          height: 56,
+          height: 64,
           display: "flex",
           alignItems: "center",
-          boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
+          borderBottom: "1px solid #e8e8e8",
           zIndex: 10,
         }}
       >
-        <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
-          <Toolbar editor={editor as Editor} />
+        <div style={{ fontSize: "18px", fontWeight: 600, color: "#1f2937" }}>
+          文档编辑器
         </div>
       </Header>
       <Layout>
@@ -83,8 +83,14 @@ function App() {
           </div>
         </Sider>
         {/* 右侧内容 */}
-        <Content style={{ background: "#fff", padding: 32, overflow: "auto" }}>
+        <Content
+          style={{ background: "#f8fafc", padding: 32, overflow: "auto" }}
+        >
           <div className="editor-container">
+            {/* 工具栏现在在编辑器容器内部 */}
+            <div className="editor-toolbar-wrapper">
+              <Toolbar editor={editor as Editor} />
+            </div>
             <EditorContent editor={editor} className="text-area" />
           </div>
         </Content>
