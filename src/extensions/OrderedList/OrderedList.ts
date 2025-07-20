@@ -3,7 +3,6 @@ import { OrderedList as TiptapOrderedList } from '@tiptap/extension-ordered-list
 
 import { ActiveButton } from '../../components/ActiveButton';
 import type { GeneralOptions } from '../../types';
-
 export interface OrderedListOptions
   extends TiptapOrderedListOptions,
   GeneralOptions<OrderedListOptions> {}

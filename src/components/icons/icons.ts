@@ -14,6 +14,8 @@ import { IndentIncrease } from "./IndentIncrease";
 import { IndentDecrease } from "./IndentDecrease";
 import { Italic } from "./Italic";
 import { ListOrdered } from "./ListOrdered";
+import { Strike } from "./Strike";
+import { Table } from "./Table";
 
 export const icons = {
   MenuDown,
@@ -32,4 +34,7 @@ export const icons = {
   IndentDecrease,
   Italic,
   ListOrdered,
+  Strike,
+  Table,
+  Image,
 } as any;

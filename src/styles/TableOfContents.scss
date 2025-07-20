@@ -1,0 +1,50 @@
+/* src/styles/TableOfContents.scss */
+.toc-container {
+    padding: 10px;
+    background-color: #f5f6fa; /* 背景颜色 */
+    border-radius: 5px; /* 圆角 */
+  }
+  
+  .toc-item {
+    margin: 5px 0; /* 项目之间的间距 */
+    font-size: 14px; /* 字体大小 */
+    color: #333; /* 字体颜色 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 隐藏超出部分 */
+    text-overflow: ellipsis; /* 超出部分显示省略号 */
+  }
+  
+  .toc-item.level-1 {
+    font-weight: bold; /* 一级标题加粗 */
+    font-size: 18px; /* 一级标题字体大小 */
+  }
+  
+  .toc-item.level-2 {
+    margin-left: 20px; /* 二级标题缩进 */
+    font-weight: bold; /* 二级标题加粗 */
+    font-size: 16px; /* 二级标题字体大小 */
+  }
+  
+  .toc-item.level-3 {
+    margin-left: 40px; /* 三级标题缩进 */
+    font-weight: bold; /* 三级标题加粗 */
+    font-size: 14px; /* 三级标题字体大小 */
+  }
+  
+  .toc-item.level-4 {
+    margin-left: 60px; /* 四级标题缩进 */
+    font-weight: normal; /* 四级标题正常 */
+    font-size: 14px; /* 四级标题字体大小 */
+  }
+  
+  .toc-item.level-5 {
+    margin-left: 80px; /* 五级标题缩进 */
+    font-weight: normal; /* 五级标题正常 */
+    font-size: 14px; /* 五级标题字体大小 */
+  }
+  
+  .toc-item.level-6 {
+    margin-left: 100px; /* 六级标题缩进 */
+    font-weight: normal; /* 六级标题正常 */
+    font-size: 14px; /* 六级标题字体大小 */
+  }

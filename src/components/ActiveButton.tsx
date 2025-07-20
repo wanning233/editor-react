@@ -116,7 +116,6 @@ export const ActiveButton = ({
         title={tooltipContent}
         placement="bottom"
         mouseEnterDelay={0.5}
-        overlayClassName="modern-tooltip"
         {...tooltipOptions}
       >
         {buttonContent}

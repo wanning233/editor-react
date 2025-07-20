@@ -1,0 +1,44 @@
+// src/extensions/Table/components/CreateTablePopover.scss
+
+.table-grid-size-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    .grid-container {
+      display: flex;
+      flex-direction: column;
+        
+      .grid-row {
+        display: flex;
+  
+        .grid-cell {
+          width: 10px; 
+          height: 10px; 
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #ccc;
+          border-radius: 2px;
+          margin: 2px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &.active {
+            background-color: #000; 
+            color: #fff; 
+          }
+  
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.1); 
+          }
+        }
+      }
+    }
+  
+    .selected-size {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }

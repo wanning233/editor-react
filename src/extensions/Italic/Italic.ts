@@ -19,7 +19,7 @@ export const Italic = TiptapItalic.extend<ItalicOptions>({
             isActive: () => editor.isActive('italic') || false,
             disabled: false,
             shortcutKeys: ['mod', 'I'],
-            icon: 'Italic',
+            icon: "Italic",
           },
         };
       },

@@ -10,11 +10,11 @@ interface ToolbarProps {
 const TOOLBAR_GROUPS = [
   {
     name: "text-style",
-    extensions: ["bold", "italic", "code"],
+    extensions: ["bold", "italic", "code", "strike", "table"],
   },
   {
     name: "heading-text",
-    extensions: ["heading", "textAlign"],
+    extensions: ["heading", "textAlign", "fontSize"],
   },
   {
     name: "lists",
@@ -22,11 +22,11 @@ const TOOLBAR_GROUPS = [
   },
   {
     name: "formatting",
-    extensions: ["color", "indent"],
+    extensions: ["color", "indent", "highlight"],
   },
   {
     name: "actions",
-    extensions: ["clear"],
+    extensions: ["clear", "image"],
   },
 ];
 
@@ -39,15 +39,13 @@ export const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
     editor.extensionManager.extensions.forEach((extension) => {
       const button = extension.options.button;
       if (button) {
-        const buttonResult = button({ editor });
+        const buttonResult = button({ editor, extension });
         // 使用扩展的实际名称
         const extensionName = extension.name.toLowerCase();
         extensionButtonMap.set(extensionName, {
           extension,
           buttonResult,
         });
-        // 调试信息：打印所有扩展名称
-        console.log(`Extension found: ${extension.name} (${extensionName})`);
       }
     });
 
@@ -67,7 +65,6 @@ export const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
           for (const name of possibleNames) {
             button = extensionButtonMap.get(name);
             if (button) {
-              console.log(`Matched extension: ${extensionName} -> ${name}`);
               break;
             }
           }

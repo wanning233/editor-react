@@ -189,7 +189,7 @@
 /* 编辑器容器也稍作美化 */
 .editor-container {
   width: 100%;
-  max-width: 800px;
+  height: 100%;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   background-color: #ffffff;

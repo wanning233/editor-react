@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Editor, EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Bold } from "./extensions/Bold/index";
@@ -16,7 +16,13 @@ import { TextAlign } from "./extensions/TextAlign/TextAlign";
 //@ts-ignore
 import { Layout } from "antd";
 import { Indent } from "./extensions/Indent";
-
+import TableOfContents from './components/TableOfContents';
+import { FontSize } from "./extensions/FontSize";
+import { DEFAULT_FONT_SIZE_LIST } from "./components/constants";
+import { Strike } from "./extensions/Strike";
+import { Table } from "./extensions/Table";
+import { Highlight } from "./extensions/Highlight";
+import { Image } from "./extensions/Image";
 const { Header, Sider, Content } = Layout;
 
 const extensions = [
@@ -32,30 +38,54 @@ const extensions = [
   Heading,
   TextAlign,
   Indent,
+  FontSize.configure({
+    fontSizes: [...DEFAULT_FONT_SIZE_LIST], 
+  }),
+  Strike,
+  Table,
+  Highlight,
+  Image,
 ];
 
-const menuItems = [
-  "主诉",
-  "现病史",
-  "既往史",
-  "流行病史",
-  "体格检查",
-  "辅助检查",
-  "门诊诊断",
-  "处置治疗",
-  "电子签名",
-  "其他记录",
-];
+interface TOCItem {
+  title: string;
+  level: number;
+}
 
 function App() {
+  const [tocItems, setTocItems] = useState<TOCItem[]>([]); 
+
   const editor = useEditor({
-    extensions: extensions,
+    extensions: extensions, // 确保扩展被正确传递
     content: "<p>Hello World!</p>",
   });
 
+  if (!editor) return null; 
+
+  useEffect(() => {
+    const updateToc = () => {
+      const content = editor.getHTML();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(content, 'text/html');
+      const headings = Array.from(doc.querySelectorAll('h1, h2, h3, h4, h5, h6')) as HTMLElement[];
+
+      const items = headings.map(heading => ({
+        title: heading.innerText,
+        level: parseInt(heading.tagName[1])
+      }));
+
+      setTocItems(items);
+    };
+
+    editor.on('update', updateToc);
+    
+    return () => {
+      editor.off('update', updateToc);
+    };
+  }, [editor]);
+
   return (
     <Layout style={{ height: "100vh" }}>
-      {/* 顶部标题栏 */}
       <Header
         style={{
           background: "#fff",
@@ -72,24 +102,13 @@ function App() {
         </div>
       </Header>
       <Layout>
-        {/* 左侧目录 */}
-        <Sider width={180} style={{ background: "#f5f6fa", padding: "24px 0" }}>
-          <div style={{ paddingLeft: 24 }}>
-            {menuItems.map((item, idx) => (
-              <div key={idx} style={{ margin: "12px 0", fontWeight: 500 }}>
-                {item}：
-              </div>
-            ))}
-          </div>
+        <Sider width={180} style={{ background: '#f5f6fa', padding: '24px 0' }}>
+          <TableOfContents items={tocItems} /> 
         </Sider>
-        {/* 右侧内容 */}
-        <Content
-          style={{ background: "#f8fafc", padding: 32, overflow: "auto" }}
-        >
+        <Content style={{ background: "#f8fafc", padding: 32, overflow: "auto" }}>
           <div className="editor-container">
-            {/* 工具栏现在在编辑器容器内部 */}
             <div className="editor-toolbar-wrapper">
-              <Toolbar editor={editor as Editor} />
+              <Toolbar editor={editor} />
             </div>
             <EditorContent editor={editor} className="text-area" />
           </div>
